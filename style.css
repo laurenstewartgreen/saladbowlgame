@@ -5,7 +5,7 @@
 .content h1 {
   font-size: 200px;
   text-align: center;
-  padding-top: 100px;
+  vertical-align: middle;
 }
 
 .content h2 {
@@ -16,5 +16,5 @@
 .content h4 {
   font-size: 20px;
   text-align: center;
-  padding-top: 100px;
+  padding-top: 300px;
 }
