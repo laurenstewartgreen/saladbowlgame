@@ -3,18 +3,18 @@
 }
 
 .content h1 {
-  font-size: 300px;
+  font-size: 200px;
   text-align: center;
   padding-top: 100px;
 }
 
 .content h2 {
-  font-size: 200px;
+  font-size: 100px;
   text-align: center;
 }
 
-.content h1 {
-  font-size: 300px;
+.content h4 {
+  font-size: 20px;
   text-align: center;
   padding-top: 100px;
 }
