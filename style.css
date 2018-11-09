@@ -16,5 +16,5 @@
 .content h4 {
   font-size: 20px;
   text-align: center;
-  padding-top: 300px;
+  vertical-align: baseline;
 }
