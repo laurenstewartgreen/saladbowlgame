@@ -55,6 +55,17 @@ footer {
   font-family: 'Indie Flower', sans-serif;
 }
 
+.teamInput {
+  display: block;
+  padding-top: 100px;
+  margin: auto 30px;
+  width: 500px;
+  height: 100px;
+  font-size: 30px;
+  align: center;
+  font-family: 'Life Savers', sans-serif;
+}
+
 .card {
   display: block;
   height: 200px;
