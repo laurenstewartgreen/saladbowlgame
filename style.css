@@ -160,6 +160,14 @@ footer {
 
 /******************  Card  ********************/
 
+.points{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-family: 'Life Savers', sans-serif;
+  font-size: 250px;
+}
+
 .card {
   display: block;
   margin: 400px auto;
