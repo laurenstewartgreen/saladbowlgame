@@ -4,6 +4,7 @@ body {
     width: 980px;
 }
 
+/**********************  Index  ***************************/
 .logo {
     padding-top: 300px;
     display: block;
@@ -50,22 +51,78 @@ footer {
   width: 500px;
   height: 100px;
   font-size: 60px;
-  align: center;
   font-family: 'Indie Flower', sans-serif;
 }
 
-#teamInput a {
+/******************  Team Input  *************************/
+
+.grid{
+  margin-top: 80px;
+  margin-left: 40px;
+  margin-right: 40px;
+  display: grid;
+  width: 800px;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
+  grid-column-gap: 30px;
+}
+
+.grid h3{
+  font-family: 'Life Savers', sans-serif;
+  font-size: 50px;
+  margin-top: 20px;
+}
+
+#TeamName {
+  border: 3px solid black;
+  border-radius: 15px;
+  width: auto;
+  height: 100px;
+  font-size: 50px;
+  font-family: 'Life Savers', sans-serif;
+}
+
+#Players {
+  border: 3px solid black;
+  border-radius: 15px;
+  width: auto;
+  height: 800px;
+  font-size: 50px;
+  font-family: 'Life Savers', sans-serif;
+}
+
+#submit {
   display: block;
-  margin: 30px auto;
+  margin: 20px auto;
   width: 500px;
+  height: 100px;
+  font-size: 60px;
+  font-family: 'Indie Flower', sans-serif;
+  border: 3px solid black;
+  border-radius: 15px;
+}
+
+.list{
+  display: table;
+  position: fixed;
+  bottom: 20px;
+  text-align: center;
+}
+
+#teamInput {
+  display: block table-cell;
+  vertical-align: bottom;
+  margin-top: 30px;
+  width: 600px;
   height: 100px;
   text-align: center;
   border: 3px solid black;
   border-radius: 15px;
-  align: center;
   font-family: 'Life Savers', sans-serif;
-  font-size: 40px;
+  font-size: 45px;
 }
+
+/*************  Rules  ****************/
 
 .exit {
   position: fixed;
@@ -74,15 +131,6 @@ footer {
   text-align: center;
   border: 3px solid black;
   border-radius: 15px;
-}
-
-.card {
-  display: block;
-  height: 200px;
-  position: relative;
-  background-color: #faffd2;
-  border: 5px solid rgb(0, 0, 0);
-
 }
 
 .rules h1{
@@ -98,11 +146,53 @@ footer {
 .rules h2 {
   font-size: 80px;
   padding-top: 20px;
-  padding-bottom: 20px;
   font-family: 'Indie Flower', sans-serif;
+  margin-left: 10px;
 }
 
 .rules p {
   font-size: 40px;
   font-family: 'Indie Flower', sans-serif;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+/******************  Card  ********************/
+
+.card {
+  display: block;
+  margin: 400px auto;
+  width: 700px;
+  height: 500px;
+  border: 3px solid rgb(200, 100, 100);
+  border-radius: 15px;
+}
+
+.card h1 {
+  font-size: 150px;
+  font-family: 'Indie Flower', sans-serif;
+  margin: auto;
+}
+
+.cardbuttons a{
+  width: 400px;
+  height: 300px;
+  font-size: 100px;
+  font-family: 'Life Savers', sans-serif;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 15px;
+}
+
+#pass{
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+}
+
+#got {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
 }
