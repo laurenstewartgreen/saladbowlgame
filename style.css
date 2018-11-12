@@ -157,14 +157,23 @@ footer {
   font-family: 'Life Savers', sans-serif;
 }
 
+.cardInput h3{
+  display: block;
+  font-size: 50px;
+  margin-top: 100px;
+  font-family: 'Life Savers', sans-serif;
+}
+
 .cardInput p{
   font-family: 'Life Savers', sans-serif;
+  margin-bottom: 50px;
   font-size: 40px;
   margin-top: 20px;
 }
 
 .cardInput li{
     font-family: 'Indie Flower', sans-serif;
+    margin-bottom: 50px;
   font-size: 40px;
   color: red;
 }
@@ -182,7 +191,7 @@ footer {
 
 #submit {
   display: block;
-  margin: 20px auto;
+  margin: 80px auto;
   width: 500px;
   height: 100px;
   font-size: 60px;
