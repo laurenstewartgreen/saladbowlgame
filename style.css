@@ -278,12 +278,20 @@ footer {
 
 /******************  Card  ********************/
 
-.points{
+.points h1{
   position: fixed;
   top: 10px;
   left: 10px;
   font-family: 'Life Savers', sans-serif;
-  font-size: 250px;
+  font-size: 70px;
+}
+
+.timer h1{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-family: 'Life Savers', sans-serif;
+  font-size: 70px;
 }
 
 .card {
