@@ -57,16 +57,23 @@ footer {
 /******************  Team Input  *************************/
 
 .teamInput{
-  margin-top: 80px;
+  margin-top: 50px;
   margin-left: 40px;
   margin-right: 40px;
   display: block;
   font-family: 'Life Savers', sans-serif;
 }
 
+.teamInput h1{
+  display: block;
+  text-align: center;
+  font-size: 100px;
+  font-family: 'Life Savers', sans-serif;
+}
+
 .teamInput li{
     font-family: 'Indie Flower', sans-serif;
-  font-size: 45px;
+  font-size: 35px;
   color: red;
 }
 
@@ -76,13 +83,19 @@ footer {
   margin-top: 20px;
 }
 
+.teamInput p{
+  font-family: 'Life Savers', sans-serif;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
 #TeamName {
   display: block;
   border: 3px solid black;
   border-radius: 15px;
   width: 850px;
-  height: 100px;
-  font-size: 50px;
+  height: 70px;
+  font-size: 30px;
   font-family: 'Life Savers', sans-serif;
 }
 
@@ -91,8 +104,8 @@ footer {
   border: 3px solid black;
   border-radius: 15px;
   width: 850px;
-  height: 350px;
-  font-size: 50px;
+  height: 300px;
+  font-size: 30px;
   font-family: 'Life Savers', sans-serif;
 }
 
