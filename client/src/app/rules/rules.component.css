@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Life+Savers');
+
+body {
+  width: 980px;
+}
+
+
+.rules h1 {
+  font-size: 100px;
+  display: block;
+  text-align: center;
+  font-family: 'Life Savers', sans-serif;
+  text-shadow: 3px 5px #000066;
+  -webkit-text-stroke: 2px black;
+  color: #ffffff;
+}
+
+.rules h2 {
+  font-size: 65px;
+  padding-top: 20px;
+  font-family: 'Indie Flower', sans-serif;
+  margin-left: 10px;
+}
+
+.rules p {
+  font-size: 36px;
+  font-family: 'Indie Flower', sans-serif;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.exit {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 15px;
+}

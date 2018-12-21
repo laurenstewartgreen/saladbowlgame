@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Life+Savers');
+
+body {
+  width: 980px;
+}
+
+
+.points h1 {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-family: 'Life Savers', sans-serif;
+  font-size: 70px;
+}
+
+.timer h1 {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-family: 'Life Savers', sans-serif;
+  font-size: 70px;
+}
+
+.card {
+  display: block;
+  margin: 400px auto;
+  width: 700px;
+  height: 500px;
+  border: 3px solid rgb(200, 100, 100);
+  border-radius: 15px;
+}
+
+.card h1 {
+  font-size: 150px;
+  font-family: 'Indie Flower', sans-serif;
+  margin: auto;
+}
+
+.cardbuttons a {
+  width: 400px;
+  height: 300px;
+  font-size: 100px;
+  font-family: 'Life Savers', sans-serif;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 15px;
+}
+
+#pass {
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+}
+
+#got {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+}
