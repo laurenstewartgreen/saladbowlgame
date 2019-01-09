@@ -3,7 +3,7 @@ import {Team} from './team.model';
 
 export class Game {
   id: number;
-  words: Words;
+  // words: Words;
   teamOne: Team;
   teamTwo: Team;
   letter: String;
@@ -13,4 +13,6 @@ export class Game {
     this.teamTwo = teamTwo;
     this.letter = letter;
   }
+
+
 }

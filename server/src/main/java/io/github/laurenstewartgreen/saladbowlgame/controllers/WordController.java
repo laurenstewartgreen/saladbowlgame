@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class WordController {
 
     private WordRepository wordRepository;
@@ -20,6 +21,7 @@ public class WordController {
 
     @PostMapping("/word")
     public ResponseEntity<Word> createWords(@RequestBody Word word) {
+        System.out.println(word.toString());
         return new ResponseEntity<>(this.wordRepository.save(word), HttpStatus.CREATED);
     }
 

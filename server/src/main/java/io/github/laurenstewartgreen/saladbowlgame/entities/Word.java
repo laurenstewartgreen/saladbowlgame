@@ -38,4 +38,13 @@ public class Word {
     public void setList(Words list) {
         this.list = list;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "id=" + id +
+                ", word='" + word + '\'' +
+                ", list=" + list +
+                '}';
+    }
 }

@@ -43,4 +43,9 @@ export class Player {
   set team(value: number) {
     this._team = value;
   }
+
+  toJSON(): string {
+    return '{ "name": "' + this._name + '", "score": ' + this._score + ', "team": ' + this._team + '}';
+
+  }
 }

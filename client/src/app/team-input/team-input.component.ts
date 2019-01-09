@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 
 import { Player } from '../models/player.model';
 import { Team } from '../models/team.model';
-import {Game} from '../models/game.model';
+import { Game } from '../models/game.model';
+import {GameService} from '../services/game.service';
+import {PlayerService} from '../services/player.service';
 
 @Component({
   selector: 'app-team-input',
@@ -13,39 +15,48 @@ import {Game} from '../models/game.model';
 export class TeamInputComponent implements OnInit {
   private _teamOneName = '';
   private _teamOneNames = '';
-  private _teamOnePlayers = new Set<Player>();
+  private _teamOnePlayers: Set<Player>;
   private _teamOne: Team;
   private _teamTwoName = '';
   private _teamTwoNames = '';
-  private _teamTwoPlayers = new Set<Player>();
+  private _teamTwoPlayers: Set<Player>;
   private _teamTwo: Team;
   private _letter = '';
   private _game: Game;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private gameService: GameService,
+              private playerService: PlayerService) {
+    this._teamOnePlayers = new Set<Player>();
+    this._teamTwoPlayers = new Set<Player>();
+  }
 
   ngOnInit() {
   }
 
   createGame() {
-    console.log(this._teamOneName + ' ' + this._teamOneNames + ' ' +  this._teamTwoName + ' ' + this._teamTwoNames + ' ' + this._letter);
     this.createPlayers(this._teamOneNames, this._teamTwoNames);
     this.createTeams(this._teamOneName, this._teamOnePlayers, this._teamTwoName, this._teamTwoPlayers);
     this._game = new Game(this._teamOne, this._teamTwo, this._letter);
-    console.log(this._game.teamOne.teamName + ' vs. ' + this._game.teamTwo.teamName);
+    this.gameService.create(this._game);
+    console.log(this._game.teamOne.teamName + ' vs. ' + this._game.teamTwo.teamName + ' the id is ' + this._game.id);
     this.router.navigate(['/card-input']);
   }
 
   createPlayers(teamOneNames: string, teamTwoNames: string) {
     const splitOne = teamOneNames.split('\n');
     for (const s1 of splitOne) {
-      this._teamOnePlayers.add(new Player(s1, 1));
+      const player1 = new Player(s1, 1);
+      this._teamOnePlayers.add(player1);
+      this.playerService.createPlayer(player1);
       console.log(s1 + ' is now on Team 1');
       console.log(this._teamOnePlayers);
     }
     const splitTwo = teamTwoNames.split('\n');
     for (const s2 of splitTwo) {
-      this._teamTwoPlayers.add(new Player(s2, 2));
+      const player2 = new Player(s2, 2);
+      this._teamTwoPlayers.add(player2);
+      this.playerService.createPlayer(player2);
       console.log(s2 + ' is now on Team 2');
       console.log(this._teamTwoPlayers);
     }

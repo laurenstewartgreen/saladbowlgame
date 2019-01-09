@@ -19,8 +19,8 @@ public class Player {
     @Column(name = "player_score")
     private int score;
 
-    @ManyToOne(targetEntity=Team.class, fetch=FetchType.EAGER)
-    private Team team;
+    @Column(name = "player_team")
+    private int team;
 
     public Player(String name) {
         this.name = name;
@@ -48,5 +48,13 @@ public class Player {
 
     public Long getId() {
         return id;
+    }
+
+    public int getTeam() {
+        return team;
+    }
+
+    public void setTeam(int team) {
+        this.team = team;
     }
 }

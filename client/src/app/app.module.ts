@@ -14,6 +14,8 @@ import { RulesComponent } from './rules/rules.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 import { TeamInputComponent } from './team-input/team-input.component';
 import { TurnComponent } from './turn/turn.component';
+import {GameService} from './services/game.service';
+import {PlayerService} from './services/player.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -66,7 +68,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GameService, PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

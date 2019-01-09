@@ -15,6 +15,8 @@ public class Game {
     @Column(name = "game_id")
     private Long id;
 
+    private char letter;
+
     @OneToOne
     private Words words;
 
@@ -27,23 +29,23 @@ public class Game {
     public Game() {
     }
 
-    public void addPlayer(Player player, Team team) {
+//    public void addPlayer(Player player, Team team) {
+//
+//        team.addPlayer(player);
+//    }
+//
+//    public void addPlayerRandomly(Player player) {
+//        if(teamOne.teamSize() <= teamTwo.teamSize()) {
+//            addPlayer(player, teamOne);
+//        } else {
+//            addPlayer(player,teamTwo);
+//        }
+//    }
 
-        team.addPlayer(player);
-    }
-
-    public void addPlayerRandomly(Player player) {
-        if(teamOne.teamSize() <= teamTwo.teamSize()) {
-            addPlayer(player, teamOne);
-        } else {
-            addPlayer(player,teamTwo);
-        }
-    }
-
-    public void addPlayerListRandomly(List<Player> players) {
-        for(Player p : players)
-            addPlayerRandomly(p);
-    }
+//    public void addPlayerListRandomly(List<Player> players) {
+//        for(Player p : players)
+//            addPlayerRandomly(p);
+//    }
 
     public Team getTeamOne() {
         return teamOne;
@@ -71,5 +73,13 @@ public class Game {
 
     public void setWords(Words words) {
         this.words = words;
+    }
+
+    public char getLetter() {
+        return letter;
+    }
+
+    public void setLetter(char letter) {
+        this.letter = letter;
     }
 }

@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PlayerController {
 
     private PlayerRepository playerRepository;
@@ -20,6 +23,11 @@ public class PlayerController {
     @PostMapping("/players")
     public ResponseEntity<Player> createPlayer(@RequestBody Player player) {
         return new ResponseEntity<>(this.playerRepository.save(player), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/players")
+    public ResponseEntity<List<Player>> getAllPlayers() {
+        return new ResponseEntity<>(this.playerRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/players/{id}")

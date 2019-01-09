@@ -14,7 +14,7 @@ public class Words {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "word_list_id")
+//    @Column(name = "word_list_id")
     private Long id;
 
     @OneToMany(targetEntity=Word.class, mappedBy = "word", fetch=FetchType.EAGER)
