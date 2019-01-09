@@ -5,30 +5,27 @@
 <body>
 
 <div>
-  <form action="#" method="post">
+  <form #gameStart = "ngForm" (ngSubmit) = "createGame(gameStart.form)">
     <div class="teamInput">
       <ul><h1>Game Setup</h1>
         <li>Enter a name and the players for each team below.</li>
         <li>Put each player on a separate line.</li>
       </ul>
       <h3>Team 1 Name:</h3>
-      <input type="text" name="team1name" id="TeamName"><
+      <input type="text" class="teamName" [(ngModel)]='teamOneName' name="teamOneName"/><
       <h3>Team 1 Players:</h3>
-      <textarea name="team1" id="Players"></textarea>
+      <textarea name="team1" class="players" [(ngModel)]='teamOneNames' name="teamOnePlayers"></textarea>
       <h3>Team 2 Name:</h3>
-      <input type="text" name="team2name" id="TeamName">
+      <input type="text" class="teamName" [(ngModel)]='teamTwoName' name="teamTwoName"/>
       <h3>Team 2 Players:</h3>
-      <textarea name="team2" id="Players"></textarea>
+      <textarea name="team2" class="players" [(ngModel)]='teamTwoNames' name="teamTwoPlayers"></textarea>
       <p>Pick a Letter (all phrases in the game will have to start with this letter):</p>
-      <input type="text" name="letter" id="TeamName">
+      <input type="text" class="teamName" [(ngModel)]='letter' name="letter"/>
     </div>
-    <!-- <input type="submit" id="submit"> -->
-    <a href="https://laurenstewartgreen.github.io/saladbowlgame/cardInput" class="btn btn-secondary btn-lg active"
-       id="submit" role="button" aria-pressed="true">Submit</a>
+      <button class="btn btn-secondary btn-lg active" id="submit" role="button">
+        Submit
+      </button>
   </form>
 </div>
-<!-- <div class="button list">
-  <a href="https://laurenstewartgreen.github.io/saladbowlgame/card" class="btn btn-secondary btn-lg active" id="teamInput" role="button" aria-pressed="true">Create Your Own Teams</a>
-</div> -->
 
 </body>
