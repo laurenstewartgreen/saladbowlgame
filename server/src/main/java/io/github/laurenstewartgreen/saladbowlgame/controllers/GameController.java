@@ -20,28 +20,27 @@ public class GameController {
         this.gameRepository = gameRepository;
     }
 
-    @PostMapping("/games")
+    @PostMapping("/game")
     public ResponseEntity<Game> createGame(@RequestBody Game game) {
-        System.out.println("hello");
         return new ResponseEntity<>(this.gameRepository.save(game), HttpStatus.CREATED);
     }
 
-    @GetMapping("/games")
+    @GetMapping("/game")
     public ResponseEntity<List<Game>> getAllGames() {
         return new ResponseEntity<>(this.gameRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/games/{id}")
+    @GetMapping("/game/{id}")
     public ResponseEntity<Game> getGame(@PathVariable Long id) {
         return new ResponseEntity<>(this.gameRepository.findById(id).get(), HttpStatus.OK);
     }
 
-    @PutMapping("/games/{id}")
+    @PutMapping("/game/{id}")
     public ResponseEntity<Game> updateGame(@PathVariable Long id, @RequestBody Game game) {
         return new ResponseEntity<>(this.gameRepository.save(game), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/games/{id}")
+    @DeleteMapping("/game/{id}")
     public ResponseEntity<Boolean> destroy(@PathVariable Long id) {
         this.gameRepository.deleteById(id);
         return new ResponseEntity<>(true, HttpStatus.OK);

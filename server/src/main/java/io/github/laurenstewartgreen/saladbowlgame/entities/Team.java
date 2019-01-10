@@ -1,9 +1,11 @@
 package io.github.laurenstewartgreen.saladbowlgame.entities;
 
+import org.hibernate.annotations.CollectionType;
+
 import javax.persistence.Id;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "teams")
@@ -20,46 +22,11 @@ public class Team {
     @Column(name = "team_score")
     private int teamScore;
 
-//    @OneToMany(targetEntity=Player.class, mappedBy="team", fetch=FetchType.EAGER)
-//    private Set<Player> players;
+    @ElementCollection
+    @Column(name = "team_players")
+    private List<String> players;
 
     public Team() {}
-
-//    public Team(Set<Player> players) {
-//        this.players = players;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public String getTeamName() {
-//        return teamName;
-//    }
-//
-//    public void setTeamName(String teamName) {
-//        this.teamName = teamName;
-//    }
-//
-//    public Set<Player> getPlayers() {
-//        return players;
-//    }
-//
-//    public void setPlayers(Set<Player> players) {
-//        this.players = players;
-//    }
-//
-//    public void addPlayer(Player player) {
-//        this.players.add(player);
-//    }
-//
-//    public void removePlayer(Player player) {
-//        this.players.remove(player);
-//    }
-//
-//    public int teamSize() {
-//        return this.players.size();
-//    }
 
     public int getTeamScore() {
         return teamScore;
@@ -67,5 +34,29 @@ public class Team {
 
     public void setTeamScore(int teamScore) {
         this.teamScore = teamScore;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public List<String> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<String> players) {
+        this.players = players;
     }
 }

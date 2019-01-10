@@ -14,7 +14,7 @@ public class Word {
     private String word;
 
     @ManyToOne
-    private Words list;
+    private WordsList list;
 
     public Word() {
     }
@@ -31,11 +31,11 @@ public class Word {
         this.word = word;
     }
 
-    public Words getList() {
+    public WordsList getList() {
         return list;
     }
 
-    public void setList(Words list) {
+    public void setList(WordsList list) {
         this.list = list;
     }
 

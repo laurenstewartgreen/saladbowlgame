@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Player } from '../models/player.model';
 import { Team } from '../models/team.model';
 import { Game } from '../models/game.model';
 import {GameService} from '../services/game.service';
-import {PlayerService} from '../services/player.service';
+import {TeamService} from '../services/team.service';
 
 @Component({
   selector: 'app-team-input',
@@ -15,20 +14,22 @@ import {PlayerService} from '../services/player.service';
 export class TeamInputComponent implements OnInit {
   private _teamOneName = '';
   private _teamOneNames = '';
-  private _teamOnePlayers: Set<Player>;
+  private _teamOnePlayers: Array<string>;
   private _teamOne: Team;
   private _teamTwoName = '';
   private _teamTwoNames = '';
-  private _teamTwoPlayers: Set<Player>;
+  private _teamTwoPlayers: Array<string>;
   private _teamTwo: Team;
   private _letter = '';
   private _game: Game;
 
   constructor(private router: Router,
               private gameService: GameService,
-              private playerService: PlayerService) {
-    this._teamOnePlayers = new Set<Player>();
-    this._teamTwoPlayers = new Set<Player>();
+              private teamService: TeamService) {
+    this._teamOnePlayers = new Array<string>();
+    this._teamTwoPlayers = new Array<string>();
+    this._teamOne = new Team();
+    this._teamTwo = new Team();
   }
 
   ngOnInit() {
@@ -38,33 +39,30 @@ export class TeamInputComponent implements OnInit {
     this.createPlayers(this._teamOneNames, this._teamTwoNames);
     this.createTeams(this._teamOneName, this._teamOnePlayers, this._teamTwoName, this._teamTwoPlayers);
     this._game = new Game(this._teamOne, this._teamTwo, this._letter);
-    this.gameService.create(this._game);
-    console.log(this._game.teamOne.teamName + ' vs. ' + this._game.teamTwo.teamName + ' the id is ' + this._game.id);
+    console.log(this._game);
+    this.gameService.createGame(this._game);
     this.router.navigate(['/card-input']);
   }
 
   createPlayers(teamOneNames: string, teamTwoNames: string) {
     const splitOne = teamOneNames.split('\n');
     for (const s1 of splitOne) {
-      const player1 = new Player(s1, 1);
-      this._teamOnePlayers.add(player1);
-      this.playerService.createPlayer(player1);
-      console.log(s1 + ' is now on Team 1');
-      console.log(this._teamOnePlayers);
+      this._teamOnePlayers.push(s1);
     }
     const splitTwo = teamTwoNames.split('\n');
     for (const s2 of splitTwo) {
-      const player2 = new Player(s2, 2);
-      this._teamTwoPlayers.add(player2);
-      this.playerService.createPlayer(player2);
-      console.log(s2 + ' is now on Team 2');
-      console.log(this._teamTwoPlayers);
+      this._teamTwoPlayers.push(s2);
     }
   }
 
-  createTeams(teamOneName: string, teamOnePlayers: Set<Player>, teamTwoName: string, teamTwoPlayers: Set<Player>) {
-    this._teamOne = new Team(teamOneName, teamOnePlayers);
-    this._teamTwo = new Team(teamTwoName, teamTwoPlayers);
+  createTeams(teamOneName: string, teamOnePlayers: Array<string>, teamTwoName: string, teamTwoPlayers: Array<string>) {
+    this._teamOne.teamName = teamOneName;
+    this._teamOne.players = teamOnePlayers;
+    this.teamService.createTeam(this._teamOne);
+    this._teamTwo.teamName = teamTwoName;
+    this._teamTwo.players = teamTwoPlayers;
+    this.teamService.createTeam(this._teamTwo);
+
   }
 
   get teamOneName(): string {
@@ -108,11 +106,11 @@ export class TeamInputComponent implements OnInit {
     this._teamOneNames = value;
   }
 
-  get teamOnePlayers(): Set<Player> {
+  get teamOnePlayers(): Array<string> {
     return this._teamOnePlayers;
   }
 
-  set teamOnePlayers(value: Set<Player>) {
+  set teamOnePlayers(value: Array<string>) {
     this._teamOnePlayers = value;
   }
 
@@ -132,11 +130,11 @@ export class TeamInputComponent implements OnInit {
     this._teamTwoNames = value;
   }
 
-  get teamTwoPlayers(): Set<Player> {
+  get teamTwoPlayers(): Array<string> {
     return this._teamTwoPlayers;
   }
 
-  set teamTwoPlayers(value: Set<Player>) {
+  set teamTwoPlayers(value: Array<string>) {
     this._teamTwoPlayers = value;
   }
 

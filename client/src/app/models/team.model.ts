@@ -1,15 +1,14 @@
-import { Player } from './player.model';
-
 export class Team {
     private _id: number;
     private _teamName: string;
     private _teamScore: number;
-    private _players: Set<Player>;
+    private _players: Array<string>;
 
-
-  constructor(teamName: string, players: Set<Player>) {
+  constructor()
+  constructor(teamName?: string, players?: Array<string>) {
     this._teamName = teamName;
     this._players = players;
+    this._teamScore = 0;
   }
 
 
@@ -37,11 +36,25 @@ export class Team {
     this._teamScore = value;
   }
 
-  get players(): Set<Player> {
+  get players(): Array<string> {
     return this._players;
   }
 
-  set players(value: Set<Player>) {
+  set players(value: Array<string>) {
     this._players = value;
   }
+
+  toJSON(): string {
+    return '{ "teamName": "' + this._teamName + '", "teamScore": ' + this._teamScore +
+      ', "players": [' + this.playersToJSON() + '] }';
+  }
+
+  playersToJSON(): string {
+    let result = '';
+    for (const s of this._players) {
+      result += '"' + s + '", ';
+    }
+    return result.slice(0, result.length - 2);
+  }
 }
+

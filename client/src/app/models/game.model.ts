@@ -14,5 +14,11 @@ export class Game {
     this.letter = letter;
   }
 
+  toJSON(): string {
+    return '{ "letter": "' + this.letter +
+      '", "teamOne": ' + this.teamOne.toJSON() +
+      ', "teamTwo": ' + this.teamTwo.toJSON() + '}';
+
+  }
 
 }

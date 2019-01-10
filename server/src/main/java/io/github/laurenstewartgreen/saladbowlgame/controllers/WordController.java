@@ -1,7 +1,6 @@
 package io.github.laurenstewartgreen.saladbowlgame.controllers;
 
 import io.github.laurenstewartgreen.saladbowlgame.entities.Word;
-import io.github.laurenstewartgreen.saladbowlgame.entities.Words;
 import io.github.laurenstewartgreen.saladbowlgame.repositories.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

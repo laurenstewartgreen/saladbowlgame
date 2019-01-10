@@ -2,9 +2,9 @@ package io.github.laurenstewartgreen.saladbowlgame.entities;
 
 import javax.persistence.Id;
 
-
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 @Table(name = "games")
@@ -15,10 +15,12 @@ public class Game {
     @Column(name = "game_id")
     private Long id;
 
+    @Column(name = "game_letter")
     private char letter;
 
-    @OneToOne
-    private Words words;
+    @ElementCollection
+    @Column(name = "game_words")
+    private List<String> words;
 
     @OneToOne
     private Team teamOne;
@@ -29,23 +31,6 @@ public class Game {
     public Game() {
     }
 
-//    public void addPlayer(Player player, Team team) {
-//
-//        team.addPlayer(player);
-//    }
-//
-//    public void addPlayerRandomly(Player player) {
-//        if(teamOne.teamSize() <= teamTwo.teamSize()) {
-//            addPlayer(player, teamOne);
-//        } else {
-//            addPlayer(player,teamTwo);
-//        }
-//    }
-
-//    public void addPlayerListRandomly(List<Player> players) {
-//        for(Player p : players)
-//            addPlayerRandomly(p);
-//    }
 
     public Team getTeamOne() {
         return teamOne;
@@ -67,11 +52,11 @@ public class Game {
         return id;
     }
 
-    public Words getWords() {
+    public List<String> getWords() {
         return words;
     }
 
-    public void setWords(Words words) {
+    public void setWords(List<String> words) {
         this.words = words;
     }
 

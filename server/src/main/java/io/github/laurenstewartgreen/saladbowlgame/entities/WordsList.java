@@ -1,16 +1,12 @@
 package io.github.laurenstewartgreen.saladbowlgame.entities;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.Id;
 import javax.persistence.*;
-import java.util.Collections;
 import java.util.Set;
 
 @Entity
 @Table(name="word_lists")
-public class Words {
+public class WordsList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,10 +16,10 @@ public class Words {
     @OneToMany(targetEntity=Word.class, mappedBy = "word", fetch=FetchType.EAGER)
     private Set<Word> words;
 
-    public Words() {
+    public WordsList() {
     }
 
-    public Words(Set<Word> words) {
+    public WordsList(Set<Word> words) {
         this.words = words;
     }
 
