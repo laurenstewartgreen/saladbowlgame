@@ -12,9 +12,18 @@ export class TeamService {
   constructor(private http: HttpClient) { }
 
   getTeamById(id: number) {
-    return this.http.get(this.TEAM_API + '/' + id).toPromise()
-      .then(returnResponse => {
-        console.log(returnResponse);
+    this.http.get(this.TEAM_API + '/' + id).toPromise()
+      .then(response => {
+        console.log(response);
+        return <Team> response;
+      });
+  }
+
+  getAllTeams() {
+    this.http.get(this.TEAM_API).toPromise()
+      .then(response => {
+        console.log(response);
+        return <Team> response;
       });
   }
 
@@ -22,6 +31,9 @@ export class TeamService {
     this.http.post(this.TEAM_API, JSON.parse(team.toJSON())).toPromise()
       .then(response => {
         console.log(response);
+        team = <Team> response;
+        console.log(team);
       });
   }
 }
+

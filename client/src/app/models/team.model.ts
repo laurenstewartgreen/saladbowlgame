@@ -4,7 +4,7 @@ export class Team {
     private _teamScore: number;
     private _players: Array<string>;
 
-  constructor()
+  constructor();
   constructor(teamName?: string, players?: Array<string>) {
     this._teamName = teamName;
     this._players = players;
@@ -51,8 +51,8 @@ export class Team {
 
   playersToJSON(): string {
     let result = '';
-    for (const s of this._players) {
-      result += '"' + s + '", ';
+    for (const player of this._players) {
+      result += '"' + player + '", ';
     }
     return result.slice(0, result.length - 2);
   }

@@ -5,12 +5,16 @@ import { Team } from '../models/team.model';
 import { Game } from '../models/game.model';
 import {GameService} from '../services/game.service';
 import {TeamService} from '../services/team.service';
+import {CardInputComponent} from '../card-input/card-input.component';
 
 @Component({
   selector: 'app-team-input',
   templateUrl: './team-input.component.html',
   styleUrls: ['./team-input.component.css']
 })
+// @RouteConfig([
+//   { path: '/card-input', component: CardInputComponent, as: 'Card-Input' }
+// ])
 export class TeamInputComponent implements OnInit {
   private _teamOneName = '';
   private _teamOneNames = '';
@@ -30,6 +34,7 @@ export class TeamInputComponent implements OnInit {
     this._teamTwoPlayers = new Array<string>();
     this._teamOne = new Team();
     this._teamTwo = new Team();
+    this._game = new Game();
   }
 
   ngOnInit() {
@@ -38,10 +43,11 @@ export class TeamInputComponent implements OnInit {
   createGame() {
     this.createPlayers(this._teamOneNames, this._teamTwoNames);
     this.createTeams(this._teamOneName, this._teamOnePlayers, this._teamTwoName, this._teamTwoPlayers);
-    this._game = new Game(this._teamOne, this._teamTwo, this._letter);
-    console.log(this._game);
+    this._game.teamOne = this._teamOne;
+    this._game.teamTwo = this._teamTwo;
+    this._game.letter = this._letter;
     this.gameService.createGame(this._game);
-    this.router.navigate(['/card-input']);
+    this.nextView();
   }
 
   createPlayers(teamOneNames: string, teamTwoNames: string) {
@@ -63,6 +69,10 @@ export class TeamInputComponent implements OnInit {
     this._teamTwo.players = teamTwoPlayers;
     this.teamService.createTeam(this._teamTwo);
 
+  }
+
+  nextView() {
+    this.router.navigate(['/card-input']);
   }
 
   get teamOneName(): string {

@@ -2,7 +2,7 @@ package io.github.laurenstewartgreen.saladbowlgame.entities;
 
 import javax.persistence.Id;
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name="word_lists")
@@ -10,21 +10,26 @@ public class WordsList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "word_list_id")
+    @Column(name = "word_list_id")
     private Long id;
 
-    @OneToMany(targetEntity=Word.class, mappedBy = "word", fetch=FetchType.EAGER)
-    private Set<Word> words;
+    @ElementCollection
+    @Column(name = "word_list")
+    private List<String> words;
 
     public WordsList() {
     }
 
-    public WordsList(Set<Word> words) {
-        this.words = words;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void add(Word word) {
-        words.add(word);
+    public List<String> getWords() {
+        return words;
+    }
+
+    public void setWords(List<String> words) {
+        this.words = words;
     }
 
     public Long getId() {

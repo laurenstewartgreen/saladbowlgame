@@ -3,21 +3,22 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<div class="cardInput">
+<div class="cardInput" *ngIf="allDataFetched">
   <h1>Create the Cards</h1>
   <ul>
-    <p>Enter three words or phrases that start with the letter: {{ teamInput.letter }}</p>
+    <p>Enter three words or phrases that start with the letter: {{ _letter }}</p>
     <li>For example: if your letter was G you could do George Washington, grapes, and gallop.</li>
     <li>Be sure to put each word or phrase on it's own line</li>
     <li>Don't let anyone else see your words!</li>
   </ul>
-  <h3>Bobby Three Words/Phrases:</h3>
-  <textarea name="team2" id="words"></textarea>
-  <!-- <input type="submit" id="submit"> -->
-  <a href="https://laurenstewartgreen.github.io/saladbowlgame/turn" class="btn btn-secondary btn-lg active"
-     id="submit" role="button" aria-pressed="true">Next Player</a>
-
+  <h3>{{_currentPlayer}} Three Words/Phrases:</h3>
+  <form #wordInput = "ngForm" (ngSubmit) = "addWords(wordInput.form)">
+  <textarea name="team2" [(ngModel)]='_newWords' id="words"></textarea>
+    <button class="btn btn-secondary btn-lg active" id="submit" role="button">
+    {{ _nextPlayer }}
+  </button>
+  </form>
 </div>
-
+<div class="loading" *ngIf="!allDataFetched"><iframe src="https://giphy.com/embed/xTk9ZvMnbIiIew7IpW" width="900" height="1700" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/loop-loading-loader-xTk9ZvMnbIiIew7IpW"></a></p></div>
 
 </body>

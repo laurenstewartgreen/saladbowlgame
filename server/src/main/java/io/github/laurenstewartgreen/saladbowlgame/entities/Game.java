@@ -5,7 +5,6 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.Id;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity
@@ -20,9 +19,9 @@ public class Game {
     @Column(name = "game_letter")
     private char letter;
 
-    @ElementCollection
-    @Column(name = "game_words")
-    private List<String> words;
+    @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private WordsList words;
 
     @OneToOne
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -56,11 +55,15 @@ public class Game {
         return id;
     }
 
-    public List<String> getWords() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public WordsList getWords() {
         return words;
     }
 
-    public void setWords(List<String> words) {
+    public void setWords(WordsList words) {
         this.words = words;
     }
 
