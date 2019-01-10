@@ -1,5 +1,7 @@
 package io.github.laurenstewartgreen.saladbowlgame.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.Id;
 
 import javax.persistence.*;
@@ -23,9 +25,11 @@ public class Game {
     private List<String> words;
 
     @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Team teamOne;
 
     @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Team teamTwo;
 
     public Game() {
