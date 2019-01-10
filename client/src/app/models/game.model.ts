@@ -15,6 +15,7 @@ export class Game {
   }
 
   toJSON(): string {
+    // return '{ "letter": "' + this.letter + '" }';
     return '{ "letter": "' + this.letter +
       '", "teamOne": ' + this.teamOne.toJSON() +
       ', "teamTwo": ' + this.teamTwo.toJSON() + '}';
@@ -22,3 +23,4 @@ export class Game {
   }
 
 }
+
