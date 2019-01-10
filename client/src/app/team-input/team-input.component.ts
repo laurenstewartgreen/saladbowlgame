@@ -5,16 +5,13 @@ import { Team } from '../models/team.model';
 import { Game } from '../models/game.model';
 import {GameService} from '../services/game.service';
 import {TeamService} from '../services/team.service';
-import {CardInputComponent} from '../card-input/card-input.component';
 
 @Component({
   selector: 'app-team-input',
   templateUrl: './team-input.component.html',
   styleUrls: ['./team-input.component.css']
 })
-// @RouteConfig([
-//   { path: '/card-input', component: CardInputComponent, as: 'Card-Input' }
-// ])
+
 export class TeamInputComponent implements OnInit {
   private _teamOneName = '';
   private _teamOneNames = '';

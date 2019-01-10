@@ -9,11 +9,7 @@ export class Game {
   private _teamTwo: Team;
   private _letter: string;
 
-  constructor();
-  constructor(teamOne?: Team, teamTwo?: Team, letter?: string) {
-    this._teamOne = teamOne;
-    this._teamTwo = teamTwo;
-    this._letter = letter;
+  constructor() {
   }
 
   get id(): number {
@@ -65,9 +61,10 @@ export class Game {
   }
 
   toJSON(): string {
-    return '{ "letter": "' + this._letter +
+    const result = '{ "letter": "' + this._letter +
       '", "teamOne": ' + this._teamOne.toJSON() +
       ', "teamTwo": ' + this._teamTwo.toJSON() + '}';
+    return result;
 
   }
 

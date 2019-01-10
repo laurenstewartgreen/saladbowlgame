@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Game} from '../models/game.model';
+import {Words} from '../models/words.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,12 +38,11 @@ export class GameService {
   }
 
   updateGame(game: Game) {
-    console.log(game.jsonWithId());
-    // this.http.put((this.GAME_API + '/' + game.id), JSON.parse(game.toJSONwithId())).toPromise()
-    //   .then(response => {
-    //     console.log(response);
-    //     game = <Game> response;
-    //     console.log(game);
-    //   });
+    this.http.put((this.GAME_API + '/' + game.id), JSON.parse(game.jsonWithId())).toPromise()
+      .then(response => {
+        console.log(response);
+        game = <Game> response;
+        console.log(game);
+      });
   }
 }

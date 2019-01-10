@@ -73,8 +73,8 @@ export class CardInputComponent implements OnInit {
     } else {
       this._wordsList.wordsList = this._words;
       this.wordsListService.createWordsList(this._wordsList);
-      this._game.words = this._wordsList;
-      this.gameService.updateGame(this._game);
+      this._game[0].words = this._wordsList;
+      this.gameService.updateGame(this._game[0]);
       this.router.navigate(['/turn']);
     }
   }

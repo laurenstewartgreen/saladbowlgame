@@ -22,7 +22,7 @@ export class Words {
     this._wordsList = value;
   }
 
-  toJSON() {
+  toJSON(): string {
     let result = '{ "words": [';
     for (const word of this._wordsList) {
       result += '"' + word + '", ';
