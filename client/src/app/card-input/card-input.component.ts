@@ -82,7 +82,7 @@ export class CardInputComponent implements OnInit {
             this._game = response2;
             console.log('Game updated in server with words list: ');
             console.log(this._game);
-            this.router.navigate(['/turn']);
+            this.router.navigate(['/turn', {id: this._game.id, player: this._players[0]}]);
           });
         });
     }
