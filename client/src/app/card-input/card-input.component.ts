@@ -29,9 +29,9 @@ export class CardInputComponent implements OnInit {
               private gameService: GameService,
               private wordsListService: WordsListService) {
     this._id = this.route.snapshot.params['id'];
+    this._wordsList = new Words();
     this._players = new Array<string>();
     this._words = new Array<string>();
-    this._wordsList = new Words();
   }
 
   ngOnInit() {
@@ -57,34 +57,41 @@ export class CardInputComponent implements OnInit {
       for (const word of this._newWords.split('\n')) {
         this._words.push(word);
       }
-      this._currentPlayer = this._players[this.i];
-      this.i++;
-      if (this.i < this._players.length) {
-        this._nextPlayer = this._players[this.i] + ' is next';
-        this._newWords = '';
-        this.refreshView();
-      } else {
-        this._nextPlayer = 'Start the Game';
-        this._newWords = '';
-        this.refreshView();
-      }
+      this.switchPlayer();
     } else {
+      for (const word of this._newWords.split('\n')) {
+        this._words.push(word);
+      }
       this._wordsList.wordsList = this._words;
+      console.log('words:');
+      console.log(this._words);
       this.wordsListService.createWordsList(this._wordsList)
         .then(response => {
-          console.log(response);
           this._wordsList = <Words> response;
           console.log('Words list added to database:');
           console.log(this._wordsList);
           this._game.words = this._wordsList;
-          console.log(this._game);
           this.gameService.updateGame(this._game).then(response2 => {
             this._game = response2;
             console.log('Game updated in server with words list: ');
             console.log(this._game);
-            this.router.navigate(['/turn', {id: this._game.id, player: this._players[0]}]);
+            this.router.navigate(['/turn', {id: this._game.id, player: this._players[0], words: this._words}]);
           });
         });
+    }
+  }
+
+  switchPlayer() {
+    this._currentPlayer = this._players[this.i];
+    this.i++;
+    if (this.i < this._players.length) {
+      this._nextPlayer = this._players[this.i] + ' is next';
+      this._newWords = '';
+      this.refreshView();
+    } else {
+      this._nextPlayer = 'Start the Game';
+      this._newWords = '';
+      this.refreshView();
     }
   }
 

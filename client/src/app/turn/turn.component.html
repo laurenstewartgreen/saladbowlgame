@@ -8,10 +8,11 @@
     <p>You may say anything other than the word itself or any abbreviation of the word.</p>
   </div>
   <div class="whosUp">
-    <h1>{{ this._currentPlayer }} you're up next! Click below when ready!</h1>
+    <h1>{{ _currentPlayer }} you're up next! Click below when ready!</h1>
     <div class="button">
-      <a class="startturn" href="https://laurenstewartgreen.github.io/saladbowlgame/card.html"
-       class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Start Turn</a>
+      <button class="btn btn-secondary btn-lg active" id="submit" role="button" (click) = "nextView()">
+        Start Turn
+      </button>
     </div>
   </div>
 </body>

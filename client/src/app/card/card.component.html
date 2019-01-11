@@ -3,18 +3,32 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+<!--<div class="card" *ngIf="allDataFetched">-->
 <div class="points">
-  <h1>Points:</h1>
+  <h1>Points: {{ _points }}</h1>
 </div>
 <div class="timer">
   <h1>Time Left:</h1>
 </div>
 <div class="card text-center">
   <div class="card-body">
-    <h1>Card Phrase</h1>
+    <h1><{{ _currentWord }}></h1>
   </div>
 </div>
 <div class="cardbuttons">
-  <a id="pass" href="#" class="card-link">Pass<br>⇦</a>
-  <a id="got" href="#" class="card-link">Got It!<br>⇨</a>
+  <form #pass = "ngForm" (ngSubmit) = "passWord(pass.form)">
+    <button class="btn btn-secondary btn-lg active" name="submit" role="button" id="pass">
+      Pass
+    </button>
+  </form>
+  <form #scoring = "ngForm" (ngSubmit) = "scoreWord(scoring.form)">
+    <button class="btn btn-secondary btn-lg active" name="submit" role="button" id="got">
+      Got it!
+    </button>
+  </form>
 </div>
+
+<!--</div>-->
+<!--<div class="loading" *ngIf="!allDataFetched"><iframe src="https://giphy.com/embed/xTk9ZvMnbIiIew7IpW" width="900" height="1700" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/loop-loading-loader-xTk9ZvMnbIiIew7IpW"></a></p></div>-->
+
+</body>

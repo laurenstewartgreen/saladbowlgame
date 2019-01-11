@@ -36,7 +36,8 @@ body {
   margin: auto;
 }
 
-.cardbuttons a {
+button {
+  display: block;
   width: 400px;
   height: 300px;
   font-size: 100px;
