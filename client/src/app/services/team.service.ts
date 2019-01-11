@@ -30,8 +30,8 @@ export class TeamService {
   createTeam(team: Team) {
     this.http.post(this.TEAM_API, JSON.parse(team.toJSON())).toPromise()
       .then(response => {
-        console.log(response);
         team = <Team> response;
+        console.log('Team created: ')
         console.log(team);
       });
   }

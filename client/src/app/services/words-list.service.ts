@@ -25,13 +25,7 @@ export class WordsListService {
     return this.http.get(this.WORDS_API).toPromise();
   }
 
-  createWordsList(words: Words) {
-    console.log(words.toJSON());
-    this.http.post(this.WORDS_API, JSON.parse(words.toJSON())).toPromise()
-      .then(response => {
-        console.log(response);
-        words = <Words> response;
-        console.log(words);
-      });
+  createWordsList(words: Words): Promise<any> {
+    return this.http.post(this.WORDS_API, JSON.parse(words.toJSON())).toPromise();
   }
 }

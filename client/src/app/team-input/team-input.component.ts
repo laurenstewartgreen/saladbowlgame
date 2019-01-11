@@ -11,7 +11,6 @@ import {TeamService} from '../services/team.service';
   templateUrl: './team-input.component.html',
   styleUrls: ['./team-input.component.css']
 })
-
 export class TeamInputComponent implements OnInit {
   private _teamOneName = '';
   private _teamOneNames = '';
@@ -43,8 +42,14 @@ export class TeamInputComponent implements OnInit {
     this._game.teamOne = this._teamOne;
     this._game.teamTwo = this._teamTwo;
     this._game.letter = this._letter;
-    this.gameService.createGame(this._game);
-    this.nextView();
+    this.gameService.createGame(this._game)
+      .then(response => {
+        console.log('Game created: ');
+        console.log(response);
+        this._game = <Game> response;
+        this.nextView(this._game.id);
+      });
+
   }
 
   createPlayers(teamOneNames: string, teamTwoNames: string) {
@@ -68,8 +73,8 @@ export class TeamInputComponent implements OnInit {
 
   }
 
-  nextView() {
-    this.router.navigate(['/card-input']);
+  nextView(game_id: number) {
+    this.router.navigate(['/card-input', {id: game_id}]);
   }
 
   get teamOneName(): string {

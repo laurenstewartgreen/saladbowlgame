@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GameService} from '../services/game.service';
 import {Game} from '../models/game.model';
@@ -35,14 +35,12 @@ export class CardInputComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Id: ' + this._id);
-    this.gameService.getAllGames()
+    this.gameService.getGameById(this._id)
       .then(response => {
-        console.log(response);
         this._game = <Game> response;
-        this._letter = this._game[0].letter;
-        this._players = this._game[0].teamOne.players;
-        this._players = this._players.concat(this._game[0].teamTwo.players);
+        this._letter = this._game.letter;
+        this._players = this._game.teamOne.players;
+        this._players = this._players.concat(this._game.teamTwo.players);
         this._currentPlayer = this._players[0];
         this._nextPlayer = this._players[1] + ' is next';
         this._allDataFetched = true;
@@ -72,10 +70,21 @@ export class CardInputComponent implements OnInit {
       }
     } else {
       this._wordsList.wordsList = this._words;
-      this.wordsListService.createWordsList(this._wordsList);
-      this._game[0].words = this._wordsList;
-      this.gameService.updateGame(this._game[0]);
-      this.router.navigate(['/turn']);
+      this.wordsListService.createWordsList(this._wordsList)
+        .then(response => {
+          console.log(response);
+          this._wordsList = <Words> response;
+          console.log('Words list added to database:');
+          console.log(this._wordsList);
+          this._game.words = this._wordsList;
+          console.log(this._game);
+          this.gameService.updateGame(this._game).then(response2 => {
+            this._game = response2;
+            console.log('Game updated in server with words list: ');
+            console.log(this._game);
+            this.router.navigate(['/turn']);
+          });
+        });
     }
   }
 

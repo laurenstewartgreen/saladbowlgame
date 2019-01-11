@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Game} from '../models/game.model';
-import {Words} from '../models/words.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,36 +12,19 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  getGameById(id: number): Game {
-    let game = new Game();
-    this.http.get(this.GAME_API + '/' + id).toPromise()
-      .then(response => {
-        console.log(response);
-        game = <Game> response;
-      });
-    return game;
+  getGameById(id: number): Promise<any> {
+    return this.http.get(this.GAME_API + '/' + id).toPromise();
   }
 
   getAllGames(): Promise<any> {
     return this.http.get(this.GAME_API).toPromise();
   }
 
-  createGame(game: Game) {
-    console.log(game.toJSON());
-    this.http.post(this.GAME_API, JSON.parse(game.toJSON())).toPromise()
-      .then(response => {
-        console.log(response);
-        game = <Game> response;
-        console.log(game);
-      });
+  createGame(game: Game): Promise<any> {
+    return this.http.post(this.GAME_API, JSON.parse(game.toJSON())).toPromise();
   }
 
-  updateGame(game: Game) {
-    this.http.put((this.GAME_API + '/' + game.id), JSON.parse(game.jsonWithId())).toPromise()
-      .then(response => {
-        console.log(response);
-        game = <Game> response;
-        console.log(game);
-      });
+  updateGame(game: Game): Promise<any> {
+    return this.http.put((this.GAME_API + '/' + game.id), JSON.parse(JSON.stringify(game))).toPromise();
   }
 }

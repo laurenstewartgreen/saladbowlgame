@@ -52,20 +52,10 @@ export class Game {
     this._words = value;
   }
 
-  jsonWithId(): string {
-    return '{ "id": ' + this._id +
-      ', "letter": "' + this._letter +
-      '", "teamOne": ' + this._teamOne.toJSON() +
-      ', "teamTwo": ' + this._teamTwo.toJSON() +
-      ', "words": ' + this._words.toJSON() + '}';
-  }
-
   toJSON(): string {
-    const result = '{ "letter": "' + this._letter +
+    return '{ "letter": "' + this._letter +
       '", "teamOne": ' + this._teamOne.toJSON() +
       ', "teamTwo": ' + this._teamTwo.toJSON() + '}';
-    return result;
-
   }
 
 }
